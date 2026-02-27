@@ -79,6 +79,7 @@
   border-radius: 12px;
   font-weight: 800;
   cursor: pointer;
+  color:black
 }
 .btn-primary:hover { filter: brightness(0.96); }
 
