@@ -1,6 +1,6 @@
-# 🩺 DermHub Admin Dashboard
+# 🩺 DermNow Admin Dashboard
 
-DermHub Admin Dashboard is a React-based platform for dermatologists and clinical staff to review and manage patient dermatology e-consultations submitted through the main DermHub patient application.
+DermNow Admin Dashboard is a React-based platform for dermatologists and clinical staff to review and manage patient dermatology e-consultations submitted through the main DermHub patient application.
 
 This project focuses exclusively on the **admin workflow**, supporting efficient review, clinical evaluation, and outcome tracking.
 
