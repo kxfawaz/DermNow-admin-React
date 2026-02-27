@@ -6,8 +6,8 @@
   --bg-button-hover: #4b5563;
 
   --text-primary: #f9fafb;
-  --text-muted: rgba(255,255,255,0.6);
-  --border-soft: rgba(255,255,255,0.1);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --border-soft: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -25,12 +25,16 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-soft);
   border-radius: 18px;
-  box-shadow: 0 14px 34px rgba(0,0,0,0.4);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
   padding: 24px;
 }
 
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: var(--text-primary);
 }
 
@@ -50,14 +54,14 @@ select {
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   border-color: #374151;
-  box-shadow: 0 0 0 3px rgba(55,65,81,0.4);
+  box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.4);
 }
 
 
@@ -115,14 +119,14 @@ button:hover {
 .label {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 
 
 .error-box {
-  border: 1px solid rgba(255,100,100,0.3);
-  background: rgba(255,0,0,0.08);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  background: rgba(255, 0, 0, 0.08);
   color: #ff6b6b;
   padding: 10px 12px;
   border-radius: 12px;
@@ -139,17 +143,17 @@ button:hover {
   --bs-table-bg: #1f2937;
   --bs-table-striped-bg: #1f2937;
   --bs-table-hover-bg: #374151;
-  --bs-table-border-color: rgba(255,255,255,0.08);
+  --bs-table-border-color: rgba(255, 255, 255, 0.08);
   --bs-table-color: #f9fafb;
 
   background-color: #1f2937 !important;
   color: #f9fafb !important;
 }
 
-.table > :not(caption) > * > * {
+.table> :not(caption)>*>* {
   background-color: #1f2937 !important;
   color: #f9fafb !important;
-  border-color: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .table thead {
@@ -171,14 +175,41 @@ button:hover {
 }
 
 .btn-row {
-  display:flex;
+  display: flex;
   gap: 12px;
   margin-top: 8px;
 }
 
+.page-container {
+  min-height: 100vh;
+  background: #111827;
+  padding: 24px;
+
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .question-row {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.question-row:hover {
+  background: #1f2937;
+}
+
+.question-row i {
+  color: #9ca3af;
+  transition: 0.2s ease;
+}
+
+.question-row i:hover {
+  color: #f9fafb;
+}
+
+.text-primary {
+  color: inherit !important;
 }
