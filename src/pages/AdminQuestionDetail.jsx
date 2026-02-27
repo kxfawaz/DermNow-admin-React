@@ -101,7 +101,7 @@ const AdminQuestionDetail = () => {
       />
 
       <button
-        className="btn btn-outline-primary d-flex align-items-center gap-2 mt-2"
+        className="btn btn-primary"
         onClick={handleSaveMain}
       >
         <i className="bi bi-pencil-square"></i>
@@ -109,7 +109,7 @@ const AdminQuestionDetail = () => {
       </button>
 
       <button
-        className="btn btn-outline-primary d-flex align-items-center gap-2"
+        className="btn btn-primary"
         onClick={handleDeleteMain}
       >
         <i className="bi bi-trash"></i>
@@ -138,7 +138,7 @@ const AdminQuestionDetail = () => {
           />
 
           <button
-            className="btn btn-outline-primary d-flex align-items-center gap-2"
+            className="btn btn-primary"
             onClick={() => handleSaveFollowup(f.id, f.prompt)}
           >
             <i className="bi bi-pencil-square"></i>
@@ -146,7 +146,7 @@ const AdminQuestionDetail = () => {
           </button>
 
           <button
-            className="btn btn-outline-primary d-flex align-items-center gap-2"
+            className="btn btn-primary"
             onClick={() => handleDeleteFollowup(f.id)}
           >
             <i className="bi bi-trash"></i>
@@ -167,7 +167,7 @@ const AdminQuestionDetail = () => {
       />
 
       <button
-        className="btn btn-outline-primary d-flex align-items-center gap-2 mt-2"
+        className="btn btn-primary"
         onClick={handleCreateFollowup}
       >
         <i className="bi bi-plus-circle"></i>

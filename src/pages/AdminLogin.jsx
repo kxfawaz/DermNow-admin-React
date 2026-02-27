@@ -72,7 +72,7 @@ async function handleSubmit(e) {
       {/* if error exists, show the error in a <p */}
       {err && <p style={{color:"red"}}>{err}</p>} 
 
-      <button className="btn-primary" type="submit">Login</button>
+      <button className="btn btn-primary" type="submit">Login</button>
     </form>
   </div>
   </div>

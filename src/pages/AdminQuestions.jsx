@@ -66,7 +66,7 @@ const AdminQuestions = () => {
     
     />
      <button
-     className="btn btn-outline-primary d-flex align-items-center gap-2 mt-2"
+     className="btn btn-primary"
      onClick={handleCreateMain}
     >
     <i className="bi bi-plus-circle"></i>
