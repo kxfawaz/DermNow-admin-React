@@ -10,7 +10,7 @@ This project focuses exclusively on the **admin workflow**, supporting efficient
 ## 📌 Features
 
 ### Core Functionalities (MVP)
-- 🔐 Admin-only access (Will update to JWT authentication)
+- 🔐 Admin-only access 
 - 📋 Dashboard view of all submitted consultations
 - 🔍 Consultation detail view including:
   - Main question (skin condition)
