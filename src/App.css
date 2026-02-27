@@ -189,29 +189,19 @@ button:hover {
   margin: 0 auto;
 }
 
-question-row {
+.question-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-
-  width: 100%;
   padding: 12px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-
 }
 
 .question-row:hover {
   background: #1f2937;
 }
 
-.question-row span {
-  flex: 0 1 auto;
-
-}
-
 .question-row i {
+  margin-left: auto; 
   color: #9ca3af;
   transition: 0.2s ease;
   cursor: pointer;
