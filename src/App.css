@@ -175,3 +175,10 @@ button:hover {
   gap: 12px;
   margin-top: 8px;
 }
+
+.question-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}

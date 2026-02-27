@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 
-export default function AdminNavbar({}) {
+export default function AdminNavbar({ }) {
   const navigate = useNavigate();
-  const {setToken} = useAuth();
+  const { setToken } = useAuth();
   const onLogout = () => {
     setToken(null);
     navigate("/admin/login")

@@ -32,7 +32,7 @@ const AdminQuestionDetail = () => {
 
   if (!question) return <div className="page-container">Loading...</div>;
 
-// UPDATE MAIN QUESTION
+  // UPDATE MAIN QUESTION
   async function handleSaveMain() {
     const updated = await updateMainQuestion(id, { prompt: mainPrompt });
 
@@ -42,7 +42,7 @@ const AdminQuestionDetail = () => {
 
     alert("Main Question Updated");
   }
-// DELETE MAIN QUESTION
+  // DELETE MAIN QUESTION
   async function handleDeleteMain() {
     await deleteMainQuestion(Number(id));
 
@@ -52,7 +52,7 @@ const AdminQuestionDetail = () => {
     navigate("/questions");
   }
 
-//  CREATE FOLLOWUP
+  //  CREATE FOLLOWUP
   async function handleCreateFollowup() {
     const created = await addFollowupQuestion(id, { prompt: newFollowup });
 
@@ -63,9 +63,9 @@ const AdminQuestionDetail = () => {
     alert("Followup Question Created!");
   }
 
-//   /
-//    * UPDATE FOLLOWUP
-//    /
+  //   /
+  //    * UPDATE FOLLOWUP
+  //    /
   async function handleSaveFollowup(fid, newPrompt) {
     const updated = await updateFollowupQuestion(fid, { prompt: newPrompt });
 
@@ -77,7 +77,7 @@ const AdminQuestionDetail = () => {
     alert("Followup Question Updated!");
   }
 
-//    * DELETE FOLLOWUP
+  //    * DELETE FOLLOWUP
 
   async function handleDeleteFollowup(fid) {
     await deleteFollowupQuestion(fid);
@@ -99,23 +99,23 @@ const AdminQuestionDetail = () => {
         value={mainPrompt}
         onChange={e => setMainPrompt(e.target.value)}
       />
-    <div className="btn-row">
-      <button
-        className="btn btn-primary"
-        onClick={handleSaveMain}
-      >
-        <i className="bi bi-pencil-square"></i>
-        Update
-      </button>
+      <div className="btn-row">
+        <button
+          className="btn btn-primary"
+          onClick={handleSaveMain}
+        >
+          <i className="bi bi-pencil-square"></i>
+          Update
+        </button>
 
-      <button
-        className="btn btn-primary"
-        onClick={handleDeleteMain}
-      >
-        <i className="bi bi-trash"></i>
-        Delete
-      </button>
-    </div>
+        <button
+          className="btn btn-primary"
+          onClick={handleDeleteMain}
+        >
+          <i className="bi bi-trash"></i>
+          Delete
+        </button>
+      </div>
 
       {/* FOLLOWUPS */}
       <h3 className="mt-4">Edit Followup Questions</h3>
@@ -137,23 +137,23 @@ const AdminQuestionDetail = () => {
               );
             }}
           />
-        <div className="btn-row">
-          <button
-            className="btn btn-primary"
-            onClick={() => handleSaveFollowup(f.id, f.prompt)}
-          >
-            <i className="bi bi-pencil-square"></i>
-            Update
-          </button>
+          <div className="btn-row">
+            <button
+              className="btn btn-primary"
+              onClick={() => handleSaveFollowup(f.id, f.prompt)}
+            >
+              <i className="bi bi-pencil-square"></i>
+              Update
+            </button>
 
-          <button
-            className="btn btn-primary"
-            onClick={() => handleDeleteFollowup(f.id)}
-          >
-            <i className="btn btn-primary"></i>
-            Delete
-          </button>
-        </div>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleDeleteFollowup(f.id)}
+            >
+              <i className="btn btn-primary"></i>
+              Delete
+            </button>
+          </div>
         </div>
       ))}
 

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
           { path: "consultations/:id", element: <ConsultationDetail /> },
           { path: "questions", element: <AdminQuestions /> },
           { path: "questions/:id", element: <AdminQuestionDetail /> },
-          { path: "/admin/management", element:<AdminManagement/>}
+          { path: "/admin/management", element: <AdminManagement /> }
         ],
       },
     ],
