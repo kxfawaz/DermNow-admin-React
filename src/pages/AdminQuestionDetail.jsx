@@ -99,7 +99,7 @@ const AdminQuestionDetail = () => {
         value={mainPrompt}
         onChange={e => setMainPrompt(e.target.value)}
       />
-
+    <div className="btn-row">
       <button
         className="btn btn-primary"
         onClick={handleSaveMain}
@@ -115,6 +115,7 @@ const AdminQuestionDetail = () => {
         <i className="bi bi-trash"></i>
         Delete
       </button>
+    </div>
 
       {/* FOLLOWUPS */}
       <h3 className="mt-4">Edit Followup Questions</h3>
@@ -136,7 +137,7 @@ const AdminQuestionDetail = () => {
               );
             }}
           />
-
+        <div className="btn-row">
           <button
             className="btn btn-primary"
             onClick={() => handleSaveFollowup(f.id, f.prompt)}
@@ -149,10 +150,10 @@ const AdminQuestionDetail = () => {
             className="btn btn-primary"
             onClick={() => handleDeleteFollowup(f.id)}
           >
-            <i className="bi bi-trash"></i>
+            <i className="btn btn-primary"></i>
             Delete
           </button>
-
+        </div>
         </div>
       ))}
 

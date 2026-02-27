@@ -175,8 +175,15 @@ button:hover {
 .btn-primary {
   background: #374151 !important;
   border: none !important;
+
 }
 
 .btn-primary:hover {
   background: #4b5563 !important;
+}
+
+.btn-row {
+  display:flex;
+  gap: 12px;
+  margin-top: 8px;
 }
