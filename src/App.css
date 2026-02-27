@@ -129,48 +129,36 @@ button:hover {
   font-size: 14px;
 }
 
-
 .page-container {
   min-height: 100vh;
   background: #111827;
   padding: 24px;
 }
 
-
-
 .table {
+  --bs-table-bg: #1f2937;
+  --bs-table-striped-bg: #1f2937;
+  --bs-table-hover-bg: #374151;
+  --bs-table-border-color: rgba(255,255,255,0.08);
+  --bs-table-color: #f9fafb;
+
   background-color: #1f2937 !important;
   color: #f9fafb !important;
-  border-color: rgba(255,255,255,0.1) !important;
 }
 
+.table > :not(caption) > * > * {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
 
 .table thead {
   background-color: #111827 !important;
 }
 
-.table thead th {
-  color: #f9fafb !important;
-  border-color: rgba(255,255,255,0.1) !important;
-}
-
-
-.table tbody tr {
-  background-color: #1f2937 !important;
-}
-
-.table tbody td {
-  border-color: rgba(255,255,255,0.05) !important;
-}
-
 .table-hover tbody tr:hover {
   background-color: #374151 !important;
 }
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #1f2937 !important;
-}
-
 
 .btn-primary {
   background: #374151 !important;
