@@ -48,7 +48,7 @@ const AdminQuestions = () => {
                     <span>{q.prompt}</span>
                     {/* Edit Icon */}
                     <i
-                        className="bi bi-pencil-square fs-4 text-primary"
+                        className="bi bi-pencil-square fs-4"
                         onClick={() => navigate(`/questions/${q.id}`)}
                         style={{ cursor: "pointer" }}
                     ></i>
