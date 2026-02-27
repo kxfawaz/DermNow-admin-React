@@ -39,7 +39,7 @@ return(
                  onClick={()=> navigate(`/consultations/${c.id}`)}                
                 >
                     <td>{c.id}</td>
-                    <td>{c.user_id}</td>
+                    <td>{c.user}</td>
                     <td>{c.primary_question}</td>
                     <td>{c.status}</td>
 
