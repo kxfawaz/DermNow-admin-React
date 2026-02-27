@@ -1,23 +1,23 @@
-# 🩺 DermNow Admin Dashboard
+#  DermNow Admin Dashboard
 
-DermNow Admin Dashboard is a React-based platform for dermatologists and clinical staff to review and manage patient dermatology e-consultations submitted through the main DermHub patient application.
+DermNow Admin is a React-based CMS used by dermatologists to review and manage dermatology e-consultations submitted through the DermNow patient application.
 
 This project focuses exclusively on the **admin workflow**, supporting efficient review, clinical evaluation, and outcome tracking.
 
 ---
 
 
-## 📌 Features
+## Features
 
 ### Core Functionalities (MVP)
-- 🔐 Admin-only access 
-- 📋 Dashboard view of all submitted consultations
-- 🔍 Consultation detail view including:
+- Admin-only access 
+- Dashboard view of all submitted consultations
+- Consultation detail view including:
   - Main question (skin condition)
   - All patient answers
   - Uploaded images with preview
-- 🔁 Secure data fetching from Flask backend
-- 🏷 Status update controls (Pending → In Review → Completed)
+- Secure data fetching from Flask backend
+- Status update controls (Pending → In Review → Completed)
 
 ### Stretch Features (Planned Enhancements)
 - Search and filtering by condition/date
@@ -27,7 +27,7 @@ This project focuses exclusively on the **admin workflow**, supporting efficient
 
 ---
 
-## 🧭 Admin User Flow
+## Admin User Flow
 
 1️⃣ **Login**
 - Admin logs in → receives secure token
@@ -52,7 +52,7 @@ This project focuses exclusively on the **admin workflow**, supporting efficient
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Area | Technology |
 |------|------------|
