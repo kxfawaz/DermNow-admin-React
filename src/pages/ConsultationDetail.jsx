@@ -24,6 +24,22 @@ const ConsultationDetail = () => {
         <p><strong>Patient Name:</strong> {consultation.user.first_name} {consultation.user.last_name}</p>
         <p><strong>Status:</strong> {consultation.status}</p>
         <p><strong>Primary Concern:</strong> {consultation.primary_concern}</p>
+        {consultation.photos?.length > 0 && (
+          <>
+            <h3 style={{ marginTop: "24px" }}>Photos</h3>
+            <div className="photo-grid">
+              {consultation.photos.map((url, i) => (
+                <img
+                  key={i}
+                  src={url}
+                  alt={`consultation-${i}`}
+                  style={{ maxWidth: 240, marginRight: 12, marginBottom: 12 }}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
 
         <h3 style={{ marginTop: "24px" }}>Follow-up Answers</h3>
 
