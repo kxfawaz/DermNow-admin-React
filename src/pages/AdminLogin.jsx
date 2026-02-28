@@ -9,6 +9,7 @@ const AdminLogin = () => {
 
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [err, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -17,6 +18,7 @@ const AdminLogin = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
+    setIsLoading(true)
 
     try {
       const res = await axios.post(
@@ -31,7 +33,6 @@ const AdminLogin = () => {
         setError("Login succeeded but no token returned");
         return;
       }
-      console.log("typeof setToken:", typeof setToken);
       setToken(token);
       navigate("/consultations", { replace: true });
     } catch (err) {
@@ -41,6 +42,8 @@ const AdminLogin = () => {
         err.response?.data?.msg ||
         "Login failed";
       setError(msg);
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -49,11 +52,12 @@ const AdminLogin = () => {
       <div className="auth-card">
         <h1 className="auth-title">Admin Login</h1>
         <p className="auth-subtitle">Sign in to manage the dashboard</p>
+
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="field">
             <label className="label">Username</label>
             <input
-              className=".admin-login-input"
+              className="admin-login-input"
               name="username"
               value={formData.username}
               onChange={handleChange}
@@ -62,7 +66,7 @@ const AdminLogin = () => {
           <div className="field">
             <label className="label">Password</label>
             <input
-              className=".admin-login-input"
+              className="admin-login-input"
               name="password"
               type="password"
               value={formData.password}
@@ -72,7 +76,18 @@ const AdminLogin = () => {
           {/* if error exists, show the error in a <p */}
           {err && <p style={{ color: "red" }}>{err}</p>}
 
-          <button className="btn btn-primary" type="submit">Login</button>
+          <button className="btn btn-primary"
+            type="submit"
+            disabled={isLoading}
+            aria-busy={isLoading}
+          >
+            {isLoading ? "Logging in.." : "Login"}
+          </button>
+          {isLoading && (
+            <p style={{ marginTop: 10, opacity: 0.8 }}>
+              Authenticating…
+            </p>
+          )}
         </form>
       </div>
     </div>
