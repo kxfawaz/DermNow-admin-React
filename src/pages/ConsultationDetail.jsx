@@ -24,21 +24,6 @@ const ConsultationDetail = () => {
         <p><strong>Patient Name:</strong> {consultation.user.first_name} {consultation.user.last_name}</p>
         <p><strong>Status:</strong> {consultation.status}</p>
         <p><strong>Primary Concern:</strong> {consultation.primary_concern}</p>
-        {consultation.photos?.length > 0 && (
-          <>
-            <h3 style={{ marginTop: "24px" }}>Photos</h3>
-            <div className="photo-grid">
-              {consultation.photos.map((url, i) => (
-                <img
-                  key={i}
-                  src={url}
-                  alt={`consultation-${i}`}
-                  style={{ maxWidth: 240, marginRight: 12, marginBottom: 12 }}
-                />
-              ))}
-            </div>
-          </>
-        )}
 
 
         <h3 style={{ marginTop: "24px" }}>Follow-up Answers</h3>
@@ -52,12 +37,28 @@ const ConsultationDetail = () => {
           </thead>
 
           <tbody>
-            {consultation.followup_answers.map((f, idx) => (
-              <tr key={idx}>
-                <td>{f.prompt}</td>
-                <td>{f.text_answer}</td>
-              </tr>
-            ))}
+            {consultation.followup_answers.map((f, idx) => {
+              const imgUrl = f.file_path
+                ? `${import.meta.env.VITE_API_BASE_URL}/${f.file_path}`
+                : null;
+
+              return (
+                <tr key={idx}>
+                  <td>{f.prompt}</td>
+                  <td>
+                    <div>{f.text_answer}</div>
+
+                    {imgUrl && (
+                      <img
+                        src={imgUrl}
+                        alt={`followup-${idx}`}
+                        style={{ maxWidth: 240, marginTop: 12, borderRadius: 8 }}
+                      />
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
