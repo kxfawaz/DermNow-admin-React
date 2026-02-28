@@ -27,6 +27,7 @@ body {
   border-radius: 18px;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
   padding: 24px;
+  color: var(--text-primary);
 }
 
 
@@ -137,6 +138,7 @@ button:hover {
   min-height: 100vh;
   background: #111827;
   padding: 24px;
+  color: var(--text-primary);
 }
 
 .table {
