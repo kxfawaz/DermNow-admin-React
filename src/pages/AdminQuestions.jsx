@@ -46,8 +46,6 @@ const AdminQuestions = () => {
     return (
         <div className="page-container">
             <h2>All Consultation Questions</h2>
-
-            // render all main questions
             {questions.map(q => (
                 <div
                     key={q.id}
@@ -56,7 +54,8 @@ const AdminQuestions = () => {
                 >
                     <span>{q.prompt}</span>
 
-                    // edit icon navigates to detail page
+            
+
                     <i
                         className="bi bi-pencil-square fs-4"
                         onClick={() => navigate(`/questions/${q.id}`)}
@@ -66,7 +65,7 @@ const AdminQuestions = () => {
                 </div>
             ))}
 
-            // create new main question section
+
             <h3>Create Main Question</h3>
 
             <input

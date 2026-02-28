@@ -4,27 +4,23 @@ import { useEffect, useState } from "react";
 
 const ConsultationList = () => {
 
-  // debug to see when component renders
   console.log("ConsultationList rendered");
 
-  // state holding all consultations
-  const [consultations, setConsultations] = useState([])
+  const [consultations, setConsultations] = useState([]);
 
-  // navigation hook for row click
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  // load consultations when component mounts
   useEffect(() => {
     console.log("ConsultationList useEffect ran");
 
     async function loadConsults() {
       const data = await fetchConsultations();
-      setConsultations(data)
+      setConsultations(data);
     }
 
-    loadConsults()
+    loadConsults();
 
-  }, [])
+  }, []);
 
   return (
     <div className="page-container">
@@ -42,12 +38,11 @@ const ConsultationList = () => {
           </thead>
 
           <tbody>
-            // render each consultation row
             {consultations.map((c) => (
               <tr
                 key={c.id}
-                // clicking row navigates to detail page
                 onClick={() => navigate(`/consultations/${c.id}`)}
+                style={{ cursor: "pointer" }}
               >
                 <td>{c.id}</td>
                 <td>{c.user}</td>
@@ -56,11 +51,11 @@ const ConsultationList = () => {
               </tr>
             ))}
           </tbody>
-        </table>
 
+        </table>
       </div>
     </div>
   );
-}
+};
 
-export default ConsultationList
+export default ConsultationList;

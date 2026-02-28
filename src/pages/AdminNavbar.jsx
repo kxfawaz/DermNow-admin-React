@@ -22,29 +22,24 @@ export default function AdminNavbar({ }) {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100">
       <div className="container-fluid">
 
-        // brand link
+
         <Link className="navbar-brand" to="/questions">
           DermHub Admin
         </Link>
 
         <div className="collapse navbar-collapse show">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-            // link to questions page
             <li className="nav-item">
               <Link className="nav-link" to="/questions">
                 Questions List
               </Link>
             </li>
 
-            // link to consultations page
             <li className="nav-item">
               <Link className="nav-link" to="/consultations">
                 Consultations
               </Link>
             </li>
-
-            // link to admin management page
             <li className="nav-item">
               <Link className="nav-link" to="/admin/management">
                 Admin Management
@@ -52,8 +47,6 @@ export default function AdminNavbar({ }) {
             </li>
 
           </ul>
-
-          // logout button
           <button className="btn btn-danger" onClick={onLogout}>
             Logout
           </button>

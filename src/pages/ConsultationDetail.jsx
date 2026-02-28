@@ -26,13 +26,12 @@ const ConsultationDetail = () => {
     <div className="page-container">
       <div className="card">
 
-        // consultation basic info
         <h2>Consultation #{consultation.id}</h2>
         <p><strong>Patient Name:</strong> {consultation.user.first_name} {consultation.user.last_name}</p>
         <p><strong>Status:</strong> {consultation.status}</p>
         <p><strong>Primary Concern:</strong> {consultation.primary_concern}</p>
 
-        // show uploaded image once if it exists
+
         {consultation.followup_answers[0]?.file_path && (
           <img
             src={`${import.meta.env.VITE_API_BASE_URL}/${consultation.followup_answers[0].file_path}`}

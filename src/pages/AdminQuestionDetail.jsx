@@ -80,7 +80,7 @@ const AdminQuestionDetail = () => {
   return (
     <div className="page-container">
 
-      // edit main question
+
       <h3>Edit Main Question</h3>
 
       <input
@@ -107,7 +107,7 @@ const AdminQuestionDetail = () => {
         </button>
       </div>
 
-      // edit followup questions
+  
       <h3 className="mt-4">Edit Followup Questions</h3>
 
       {followups.map(f => (
@@ -147,7 +147,6 @@ const AdminQuestionDetail = () => {
         </div>
       ))}
 
-      // create new followup question
       <h3>Create Followup Question</h3>
 
       <input

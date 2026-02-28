@@ -124,7 +124,7 @@ const AdminManagement = () => {
 
                     <button className="btn btn-primary" type='submit'>Submit</button>
 
-                    // display error or success message
+
                     {error && <p style={{ color: "red" }}>{error}</p>}
                     {success && <p style={{ color: "green" }}>{success}</p>}
 
