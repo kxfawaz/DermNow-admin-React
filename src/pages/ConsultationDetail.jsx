@@ -1,11 +1,16 @@
 import { fetchConsultation } from "../api";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const ConsultationDetail = () => {
+
+  // get consultation id from URL
   const { id } = useParams();
+
+  // state to store consultation details
   const [consultation, setConsultation] = useState(null);
 
+  // load consultation on mount
   useEffect(() => {
     async function loadConsult() {
       const data = await fetchConsultation(id);
@@ -20,11 +25,21 @@ const ConsultationDetail = () => {
   return (
     <div className="page-container">
       <div className="card">
+
+        // consultation basic info
         <h2>Consultation #{consultation.id}</h2>
         <p><strong>Patient Name:</strong> {consultation.user.first_name} {consultation.user.last_name}</p>
         <p><strong>Status:</strong> {consultation.status}</p>
         <p><strong>Primary Concern:</strong> {consultation.primary_concern}</p>
 
+        // show uploaded image once if it exists
+        {consultation.followup_answers[0]?.file_path && (
+          <img
+            src={`${import.meta.env.VITE_API_BASE_URL}/${consultation.followup_answers[0].file_path}`}
+            alt="consultation"
+            style={{ maxWidth: 240, marginTop: 20, borderRadius: 8 }}
+          />
+        )}
 
         <h3 style={{ marginTop: "24px" }}>Follow-up Answers</h3>
 
@@ -38,6 +53,8 @@ const ConsultationDetail = () => {
 
           <tbody>
             {consultation.followup_answers.map((f, idx) => {
+
+              // build image URL (not used here anymore)
               const imgUrl = f.file_path
                 ? `${import.meta.env.VITE_API_BASE_URL}/${f.file_path}`
                 : null;
@@ -47,20 +64,13 @@ const ConsultationDetail = () => {
                   <td>{f.prompt}</td>
                   <td>
                     <div>{f.text_answer}</div>
-
-                    {imgUrl && (
-                      <img
-                        src={imgUrl}
-                        alt={`followup-${idx}`}
-                        style={{ maxWidth: 240, marginTop: 12, borderRadius: 8 }}
-                      />
-                    )}
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+
       </div>
     </div>
   );

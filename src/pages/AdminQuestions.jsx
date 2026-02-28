@@ -3,16 +3,19 @@ import { fetchQuestions } from "../api";
 import { useNavigate } from "react-router-dom";
 import { addMainQuestion } from "../api";
 
-
 const AdminQuestions = () => {
+
+    // state holding all main questions
     const [questions, setQuestions] = useState(null);
 
-    // Create main question state
+    // state for creating a new main question
     const [newMainQuestion, setNewMainQuestion] = useState("")
     const [newFormId, setNewFormId] = useState(1)
 
+    // navigation hook
     const navigate = useNavigate();
 
+    // load questions when component mounts
     useEffect(() => {
         async function loadQuestions() {
             const data = await fetchQuestions();
@@ -23,22 +26,28 @@ const AdminQuestions = () => {
 
     if (!questions) return <div className="page-container">Loading...</div>;
 
-
+    // create new main question
     async function handleCreateMain() {
         const created = await addMainQuestion({
             prompt: newMainQuestion,
             form_id: newFormId,
         });
-        setQuestions(prev => [...prev, created]);  // UPDATE LIST INSTANTLY so i dont need to refresh
+
+        // update UI instantly without refresh
+        setQuestions(prev => [...prev, created]);
+
         setNewMainQuestion("");
         alert("Main Question Created!");
-        navigate("/questions")
 
+        // redirect back to questions page
+        navigate("/questions")
     }
 
     return (
         <div className="page-container">
             <h2>All Consultation Questions</h2>
+
+            // render all main questions
             {questions.map(q => (
                 <div
                     key={q.id}
@@ -46,7 +55,8 @@ const AdminQuestions = () => {
                     style={{ cursor: "pointer" }}
                 >
                     <span>{q.prompt}</span>
-                    {/* Edit Icon */}
+
+                    // edit icon navigates to detail page
                     <i
                         className="bi bi-pencil-square fs-4"
                         onClick={() => navigate(`/questions/${q.id}`)}
@@ -56,15 +66,16 @@ const AdminQuestions = () => {
                 </div>
             ))}
 
-
+            // create new main question section
             <h3>Create Main Question</h3>
+
             <input
                 className="create-inputs"
                 placeholder="New main question"
                 value={newMainQuestion}
                 onChange={(e) => setNewMainQuestion(e.target.value)}
-
             />
+
             <button
                 className="btn btn-primary"
                 onClick={handleCreateMain}
@@ -73,15 +84,8 @@ const AdminQuestions = () => {
                 Add Main Question
             </button>
 
-
-
         </div>
-
-
-
-
     )
 }
-
 
 export default AdminQuestions;

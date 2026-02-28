@@ -11,15 +11,19 @@ import {
 } from "../api";
 
 const AdminQuestionDetail = () => {
+  // get question id from URL
   const { id } = useParams();
+
+  // used for redirect after delete
   const navigate = useNavigate();
 
+  // state for main question and followups
   const [question, setQuestion] = useState(null);
   const [followups, setFollowups] = useState([]);
   const [mainPrompt, setMainPrompt] = useState("");
   const [newFollowup, setNewFollowup] = useState("");
 
-  // Load main + followups on mount
+  // load main question and followups on mount
   useEffect(() => {
     async function loadData() {
       const data = await fetchMainQuestion(id);
@@ -32,44 +36,33 @@ const AdminQuestionDetail = () => {
 
   if (!question) return <div className="page-container">Loading...</div>;
 
-  // UPDATE MAIN QUESTION
+  // update main question
   async function handleSaveMain() {
     const updated = await updateMainQuestion(id, { prompt: mainPrompt });
-
-    // Update parent state immediately
     setQuestion(updated);
     setMainPrompt(updated.prompt);
-
     alert("Main Question Updated");
   }
-  // DELETE MAIN QUESTION
+
+  // delete main question and redirect
   async function handleDeleteMain() {
     await deleteMainQuestion(Number(id));
-
     alert("Main Question Deleted");
-
-    // Go back to list instantly
     navigate("/questions");
   }
 
-  //  CREATE FOLLOWUP
+  // create new followup question
   async function handleCreateFollowup() {
     const created = await addFollowupQuestion(id, { prompt: newFollowup });
-
-    // Update UI instantly
     setFollowups(prev => [...prev, created]);
-
     setNewFollowup("");
     alert("Followup Question Created!");
   }
 
-  //   /
-  //    * UPDATE FOLLOWUP
-  //    /
+  // update a followup question
   async function handleSaveFollowup(fid, newPrompt) {
     const updated = await updateFollowupQuestion(fid, { prompt: newPrompt });
 
-    // Update UI instantly
     setFollowups(prev =>
       prev.map(f => (f.id === fid ? updated : f))
     );
@@ -77,21 +70,17 @@ const AdminQuestionDetail = () => {
     alert("Followup Question Updated!");
   }
 
-  //    * DELETE FOLLOWUP
-
+  // delete a followup question
   async function handleDeleteFollowup(fid) {
     await deleteFollowupQuestion(fid);
-
-    // Update UI instantly
     setFollowups(prev => prev.filter(f => f.id !== fid));
-
     alert("Followup Question Deleted!");
   }
 
   return (
     <div className="page-container">
 
-      {/* MAIN QUESTION */}
+      // edit main question
       <h3>Edit Main Question</h3>
 
       <input
@@ -99,6 +88,7 @@ const AdminQuestionDetail = () => {
         value={mainPrompt}
         onChange={e => setMainPrompt(e.target.value)}
       />
+
       <div className="btn-row">
         <button
           className="btn btn-primary"
@@ -117,7 +107,7 @@ const AdminQuestionDetail = () => {
         </button>
       </div>
 
-      {/* FOLLOWUPS */}
+      // edit followup questions
       <h3 className="mt-4">Edit Followup Questions</h3>
 
       {followups.map(f => (
@@ -129,7 +119,6 @@ const AdminQuestionDetail = () => {
             onChange={e => {
               const updatedPrompt = e.target.value;
 
-              // Live editing in the field
               setFollowups(prev =>
                 prev.map(fl =>
                   fl.id === f.id ? { ...fl, prompt: updatedPrompt } : fl
@@ -137,6 +126,7 @@ const AdminQuestionDetail = () => {
               );
             }}
           />
+
           <div className="btn-row">
             <button
               className="btn btn-primary"
@@ -157,7 +147,7 @@ const AdminQuestionDetail = () => {
         </div>
       ))}
 
-      {/* CREATE FOLLOWUP */}
+      // create new followup question
       <h3>Create Followup Question</h3>
 
       <input
