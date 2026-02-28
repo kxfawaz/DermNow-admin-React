@@ -4,7 +4,7 @@ import axios from "axios"
 import { useState } from "react"
 
 const AdminLogin = () => {
-  const { setToken } = useAuth()  //accesing the token from context
+  const { setToken } = useAuth()
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -73,7 +73,7 @@ const AdminLogin = () => {
               onChange={handleChange}
             />
           </div>
-          {/* if error exists, show the error in a <p */}
+
           {err && <p style={{ color: "red" }}>{err}</p>}
 
           <button className="btn btn-primary"
@@ -85,7 +85,7 @@ const AdminLogin = () => {
           </button>
           {isLoading && (
             <p style={{ marginTop: 10, opacity: 0.8 }}>
-              Authenticating…
+              Loggin In
             </p>
           )}
         </form>

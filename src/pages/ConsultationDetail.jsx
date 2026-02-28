@@ -1,67 +1,52 @@
-import { fetchConsultation } from "../api"
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { fetchConsultation } from "../api";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const ConsultationDetail = () => {
-  const { id } = useParams()
-  const [consultation, setConsultation] = useState(null)
+  const { id } = useParams();
+  const [consultation, setConsultation] = useState(null);
 
   useEffect(() => {
     async function loadConsult() {
-      const data = await fetchConsultation(id)
-      setConsultation(data)
+      const data = await fetchConsultation(id);
+      console.log("DETAIL DATA:", data);
+      setConsultation(data);
     }
-    loadConsult()
-  }, [id])
+    loadConsult();
+  }, [id]);
 
-  if (!consultation) {
-    return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 px-6 py-10">
-        Loading...
-      </div>
-    )
-  }
+  if (!consultation) return <div className="page-container">Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 px-6 py-10">
-      <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-slate-900/40 p-6 shadow-lg shadow-black/30">
-        <h2 className="text-2xl font-bold text-white">
-          Consultation #{consultation.id}
-        </h2>
+    <div className="page-container">
+      <div className="card">
+        <h2>Consultation #{consultation.id}</h2>
+        <p><strong>Patient Name:</strong> {consultation.user.first_name} {consultation.user.last_name}</p>
+        <p><strong>Status:</strong> {consultation.status}</p>
+        <p><strong>Primary Concern:</strong> {consultation.primary_concern}</p>
 
-        <div className="mt-4 space-y-2 text-slate-300">
-          <p>
-            <span className="font-semibold text-slate-200">Patient Name:</span>{" "}
-            {consultation.user.first_name} {consultation.user.last_name}
-          </p>
-          <p>
-            <span className="font-semibold text-slate-200">Status:</span>{" "}
-            {consultation.status}
-          </p>
-          <p>
-            <span className="font-semibold text-slate-200">Primary Concern:</span>{" "}
-            {consultation.primary_concern}
-          </p>
-        </div>
+        <h3 style={{ marginTop: "24px" }}>Follow-up Answers</h3>
 
-        <hr className="my-6 border-white/10" />
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Answer</th>
+            </tr>
+          </thead>
 
-        <h3 className="text-lg font-semibold text-white">Follow-up Answers</h3>
-
-        <div className="mt-4 space-y-4">
-          {consultation.followup_answers.map((f, idx) => (
-            <div
-              key={idx}
-              className="rounded-xl border border-white/10 bg-slate-950/40 p-4"
-            >
-              <p className="font-semibold text-slate-100">{f.prompt}</p>
-              <p className="mt-2 text-slate-300">{f.text_answer || "—"}</p>
-            </div>
-          ))}
-        </div>
+          <tbody>
+            {consultation.followup_answers.map((f, idx) => (
+              <tr key={idx}>
+                <td>{f.prompt}</td>
+                <td>{f.text_answer}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ConsultationDetail
+export default ConsultationDetail;
