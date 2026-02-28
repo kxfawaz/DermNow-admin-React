@@ -31,7 +31,7 @@ const ConsultationList = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>User</th>
+              <th>Patient Name</th>
               <th>Primary Concern</th>
               <th>Status</th>
             </tr>
